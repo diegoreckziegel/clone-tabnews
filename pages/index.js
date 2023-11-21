@@ -1,5 +1,5 @@
 function Teste() {
-    return <h1>Primeira pagina</h1>
+    return <h1>Primeira pagina 👍</h1>
 }
 
 export default Teste;
