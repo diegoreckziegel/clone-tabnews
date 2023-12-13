@@ -8,8 +8,12 @@ async function query(SQL) {
   });
 
   await client.connect();
+
   const result = await client.query(SQL);
   console.log(result.rows);
 }
 
+function test() {
+  return "";
+}
 export default { query: query };
