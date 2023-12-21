@@ -1,8 +1,21 @@
 import database from "infra/database.js";
 
 async function status(request, response) {
-  await database.query("SELECT 1+1 soma;");
-  response.status(200).json("status é legal");
+  const version = await database.version();
+  const maxConnections = await database.maxConnections();
+  const opendedConnections = await database.opendedConnections();
+
+  const updatedAt = new Date().toISOString();
+  response.status(200).json({
+    updated_at: updatedAt,
+    dependencies: {
+      database: {
+        version: version,
+        max_connections: maxConnections,
+        opended_connections: opendedConnections,
+      },
+    },
+  });
 }
 
 export default status;
